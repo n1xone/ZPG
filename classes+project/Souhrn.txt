@@ -1,0 +1,9 @@
+1a) Splneno – Ukazka nespravne transformace normaloveho vektoru pri transformaci objektu
+1b) Splneno – Oprava pomoci normalove matice transpose(inverse(mat3(modelMatrix)))
+
+2a) Splneno – Demonstrace nespravneho vypoctu zrcadlove slozky Phongova osvetlovaciho modelu pri shininess = 1
+2b) Splneno – Oprava zrcadlove slozky, ktera se pocita pouze na osvetlene strane objektu
+2c) Splneno – Demonstrace nespravneho pomeru stran pri zmene velikosti okna
+2d) Splneno – Oprava pomeru stran projekcni matice a automaticka aktualizace viewportu
+
+3a) Splneno – Vytvoren nocni les s pohybujici se svetluskou jako bodovym zdrojem svetla. Implementovano osvetleni stromu, keru a zeme s utlumenim intenzity podle vzdalenosti
