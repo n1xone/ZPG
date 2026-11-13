@@ -12,7 +12,7 @@ GLuint ShaderProgram::compile(GLenum type, const char* path)
         throw std::runtime_error(std::string("Unable to open shader: ") + path);
 
     const std::string code((std::istreambuf_iterator<char>(file)),
-                            std::istreambuf_iterator<char>());
+                           std::istreambuf_iterator<char>());
 
     const char* source = code.c_str();
     GLuint shader = glCreateShader(type);
@@ -23,10 +23,10 @@ GLuint ShaderProgram::compile(GLenum type, const char* path)
     glShaderSource(shader, 1, &source, nullptr);
     glCompileShader(shader);
 
-
     GLint success;
     glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
-    if (!success) {
+    if (!success)
+    {
         char log[1024] = {};
         glGetShaderInfoLog(shader, sizeof(log), nullptr, log);
         glDeleteShader(shader);
@@ -40,7 +40,8 @@ ShaderProgram::ShaderProgram(const char* vertexPath, const char* fragmentPath)
     GLuint vertex = compile(GL_VERTEX_SHADER, vertexPath);
     GLuint fragment = 0;
 
-    try {
+    try
+    {
         fragment = compile(GL_FRAGMENT_SHADER, fragmentPath);
         program_ = glCreateProgram();
 
@@ -54,15 +55,20 @@ ShaderProgram::ShaderProgram(const char* vertexPath, const char* fragmentPath)
         GLint success;
         glGetProgramiv(program_, GL_LINK_STATUS, &success);
 
-        if (!success) {
+        if (!success)
+        {
             char log[1024] = {};
             glGetProgramInfoLog(program_, sizeof(log), nullptr, log);
             throw std::runtime_error(std::string("Shader program link failed:\n") + log);
         }
-    }catch (...) {
+    }
+    catch (...)
+    {
         glDeleteShader(vertex);
-        if (fragment) glDeleteShader(fragment);
-        if (program_) glDeleteProgram(program_);
+        if (fragment)
+            glDeleteShader(fragment);
+        if (program_)
+            glDeleteProgram(program_);
         throw;
     }
     glDetachShader(program_, vertex);
@@ -71,17 +77,26 @@ ShaderProgram::ShaderProgram(const char* vertexPath, const char* fragmentPath)
     glDeleteShader(fragment);
 }
 
-ShaderProgram::~ShaderProgram() { glDeleteProgram(program_); }
+ShaderProgram::~ShaderProgram()
+{
+    glDeleteProgram(program_);
+}
 
-void ShaderProgram::use() const { glUseProgram(program_); }
+void ShaderProgram::use() const
+{
+    glUseProgram(program_);
+}
 
-void ShaderProgram::unuse() { glUseProgram(0); }
+void ShaderProgram::unuse()
+{
+    glUseProgram(0);
+}
 
 GLint ShaderProgram::uniformLocation(const char* name) const
 {
     GLint location = glGetUniformLocation(program_, name);
     if (location == -1)
-        throw std::runtime_error(std::string("Uniform not found: ") + name); //end of the program
+        throw std::runtime_error(std::string("Uniform not found: ") + name); // end of the program
     return location;
 }
 
@@ -106,5 +121,14 @@ void ShaderProgram::setUniform(const char* name, const glm::mat4& matrix) const
     const GLint location = uniformLocation(name);
     use();
     glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
+    unuse();
+}
+
+void ShaderProgram::setUniform(const char* name, int value) const
+{
+    const GLint location = uniformLocation(name);
+
+    use();
+    glUniform1i(location, value);
     unuse();
 }

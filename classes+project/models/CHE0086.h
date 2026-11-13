@@ -3,7 +3,7 @@
  *
  * @brief 3D model of login CHE0086
  *
- * @details Generated in Blender with AI-assisted script
+ * @details Exported from Blender
  *          Format: x, y, z, nx, ny, nz
  *
  * @author Nikita Chervinskyi CHE0086

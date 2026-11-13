@@ -15,11 +15,12 @@ public:
 
     void moveForward(float distance);
     void moveRight(float distance);
+    void moveHeight(float distance);
     void rotate(float mouseX, float mouseY);
 
     void setAspectRatio(float aspectRatio);
 
-    void attachShader(ShaderProgram* shader); //for observer
+    void attachShader(ShaderProgram* shader); // for observer
 
 private:
     void updateTarget();

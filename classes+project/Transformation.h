@@ -12,7 +12,6 @@ public:
     virtual glm::mat4 getMatrix(float time) const = 0;
 };
 
-
 class Translation : public Transformation
 {
 public:
@@ -24,7 +23,6 @@ private:
     glm::vec3 position_;
 };
 
-
 class Scale : public Transformation
 {
 public:
@@ -35,7 +33,6 @@ public:
 private:
     glm::vec3 scale_;
 };
-
 
 class Rotation : public Transformation
 {
@@ -50,7 +47,6 @@ private:
     glm::vec3 axis_;
     float speed_ = 0.0f;
 };
-
 
 class CompositeTransformation : public Transformation
 {

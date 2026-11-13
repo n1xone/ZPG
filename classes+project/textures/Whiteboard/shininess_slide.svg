@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="1160" viewBox="0 0 2048 1160">
+  <rect x="0" y="0" width="2048" height="104" fill="#c9c7df"/>
+  <text x="52" y="70" fill="#34445f" font-family="DejaVu Sans, sans-serif" font-size="54">Shininess constant</text>
+  <text x="128" y="177" fill="#27313c" font-family="DejaVu Sans, sans-serif" font-size="36">Ukázka změny průběhu funkce kosinus s různými koeficienty.</text>
+
+  <g stroke="#343a40" stroke-width="5" fill="none">
+    <path d="M 260 290 L 260 930"/>
+    <path d="M 260 610 L 1260 610"/>
+    <path d="M 260 290 l -14 24 M 260 290 l 14 24"/>
+    <path d="M 1260 610 l -24 -14 M 1260 610 l -24 14"/>
+    <path d="M 250 370 L 270 370 M 250 850 L 270 850 M 760 598 L 760 622 M 1260 598 L 1260 622"/>
+    <polyline stroke="#d84a61" points="260,370 385,405 510,490 635,575 760,610 885,575 1010,490 1135,405 1260,370"/>
+    <polyline stroke="#a64eaa" points="260,370 385,542 510,609 635,610 760,610 885,610 1010,609 1135,542 1260,370"/>
+    <polyline stroke="#4474d8" points="260,370 385,388 510,440 635,518 760,610 885,702 1010,780 1135,832 1260,850"/>
+    <polyline stroke="#4fbd62" points="260,370 385,448 510,568 635,608 760,610 885,612 1010,652 1135,772 1260,850"/>
+  </g>
+
+  <g fill="#343a40" font-family="DejaVu Sans, sans-serif" font-size="38">
+    <text x="276" y="284" font-style="italic">f(x)</text>
+    <text x="1278" y="625" font-style="italic">x</text>
+    <text x="214" y="383">1</text>
+    <text x="196" y="863">-1</text>
+    <text x="742" y="665">π/2</text>
+    <text x="1242" y="665">π</text>
+  </g>
+
+  <g font-family="DejaVu Sans, sans-serif" font-size="34" font-style="italic">
+    <text x="1350" y="390" fill="#d84a61">f(x) = cos² x</text>
+    <text x="1350" y="448" fill="#a64eaa">f(x) = cos¹⁶ x</text>
+    <text x="1350" y="808" fill="#4474d8">f(x) = cos x</text>
+    <text x="1350" y="866" fill="#4fbd62">f(x) = cos⁵ x</text>
+  </g>
+  <text x="64" y="1090" fill="#4c9fa7" font-family="DejaVu Sans, sans-serif" font-size="22">ZPG | SHININESS CONSTANT | COSINE POWER</text>
+  <text x="1984" y="1090" fill="#27313c" font-family="DejaVu Sans, sans-serif" font-size="34" font-weight="bold" text-anchor="end">CHE0086</text>
+</svg>

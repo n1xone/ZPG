@@ -3,7 +3,8 @@
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
-class Window {
+class Window
+{
 public:
     Window();
     ~Window();
@@ -17,6 +18,7 @@ public:
     void swapBuffers() const;
     void pollEvents() const;
     void framebufferSize(int& width, int& height) const;
+    void windowSize(int& width, int& height) const;
     void cursorPosition(double& x, double& y) const;
     double time() const;
 

@@ -5,10 +5,13 @@
 
 int main()
 {
-    try {
+    try
+    {
         Application application;
         application.run();
-    } catch (const std::exception& error) {
+    }
+    catch (const std::exception& error)
+    {
         std::cerr << error.what() << '\n';
         return EXIT_FAILURE;
     }

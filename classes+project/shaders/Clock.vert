@@ -10,10 +10,12 @@ uniform mat4 projectionMatrix = mat4(1.0);
 uniform float timeSeconds;
 
 out vec3 originalColor;
+out vec3 localPosition;
 
 void main()
 {
     originalColor = vertexColor;
+    localPosition = position;
 
     vec3 pos = position;
     float angle = 0.0;

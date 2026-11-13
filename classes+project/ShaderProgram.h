@@ -19,6 +19,7 @@ public:
     void setUniform(const char* name, float value) const;
     void setUniform(const char* name, float x, float y, float z) const;
     void setUniform(const char* name, const glm::mat4& matrix) const;
+    void setUniform(const char* name, int value) const;
 
 private:
     static GLuint compile(GLenum type, const char* path);

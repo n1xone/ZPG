@@ -1,21 +1,14 @@
 #include "DrawableObject.h"
 
-
-DrawableObject::DrawableObject(
-    const Model* model,
-    const ShaderProgram* shader)
-    : model_(model),
-      shader_(shader)
+DrawableObject::DrawableObject(const Model* model, const ShaderProgram* shader)
+    : model_(model), shader_(shader)
 {
 }
 
-
-void DrawableObject::setTransformation(
-    std::shared_ptr<Transformation> transformation)
+void DrawableObject::setTransformation(std::shared_ptr<Transformation> transformation)
 {
     transformation_ = transformation;
 }
-
 
 void DrawableObject::draw(float time) const
 {
@@ -27,6 +20,6 @@ void DrawableObject::draw(float time) const
     shader_->setUniform("modelMatrix", matrix);
 
     shader_->use();
-    model_->draw();
+    model_->draw(id_);
     ShaderProgram::unuse();
 }

@@ -1,0 +1,6 @@
+/classes+project/app
+*.o
+*.out
+core
+core.*
+.DS_Store

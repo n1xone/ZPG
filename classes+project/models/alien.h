@@ -1,4 +1,4 @@
-// Generated procedurally with AI assistance for ZPG - Nikita Chervinskyi CHE0086
+// Procedural model for ZPG - Nikita Chervinskyi CHE0086
 // Vertex layout (9 floats): position XYZ, color RGB, normal XYZ
 // Coordinates: Y is up; front faces +Z
 #pragma once

@@ -10,8 +10,10 @@ Window::Window()
     if (!glfwInit())
         throw std::runtime_error("GLFW initialization failed");
 
+    glfwWindowHint(GLFW_STENCIL_BITS, 8);
     window_ = glfwCreateWindow(1200, 900, "ZPG", nullptr, nullptr);
-    if (!window_) {
+    if (!window_)
+    {
         glfwTerminate();
         throw std::runtime_error("Unable to create window");
     }
@@ -19,12 +21,15 @@ Window::Window()
     glfwMakeContextCurrent(window_);
     glfwSwapInterval(1);
 
-    if (!gladLoadGL((GLADloadfunc)glfwGetProcAddress)) {
+    if (!gladLoadGL((GLADloadfunc)glfwGetProcAddress))
+    {
         glfwDestroyWindow(window_);
         glfwTerminate();
         throw std::runtime_error("GLAD initialization failed");
     }
-        
+
+    glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);
+
     int width, height;
     glfwGetFramebufferSize(window_, &width, &height);
     glViewport(0, 0, width, height);
@@ -37,6 +42,11 @@ Window::Window()
     int major, minor, revision;
     glfwGetVersion(&major, &minor, &revision);
     std::printf("Using GLFW %i.%i.%i\n", major, minor, revision);
+
+    GLint textureUnits = 0;
+    glGetIntegerv(GL_MAX_TEXTURE_IMAGE_UNITS, &textureUnits);
+
+    std::printf("Texture units: %d\n", textureUnits);
 }
 
 Window::~Window()
@@ -45,23 +55,44 @@ Window::~Window()
     glfwTerminate();
 }
 
-bool Window::shouldClose() const { return glfwWindowShouldClose(window_); }
-bool Window::isKeyPressed(int key) const { return glfwGetKey(window_, key) == GLFW_PRESS; }
-bool Window::isMouseButtonPressed(int button) const { return glfwGetMouseButton(window_, button) == GLFW_PRESS; }
-void Window::swapBuffers() const { glfwSwapBuffers(window_); }
-void Window::pollEvents() const { glfwPollEvents(); }
-double Window::time() const { return glfwGetTime(); }
-
+bool Window::shouldClose() const
+{
+    return glfwWindowShouldClose(window_);
+}
+bool Window::isKeyPressed(int key) const
+{
+    return glfwGetKey(window_, key) == GLFW_PRESS;
+}
+bool Window::isMouseButtonPressed(int button) const
+{
+    return glfwGetMouseButton(window_, button) == GLFW_PRESS;
+}
+void Window::swapBuffers() const
+{
+    glfwSwapBuffers(window_);
+}
+void Window::pollEvents() const
+{
+    glfwPollEvents();
+}
+double Window::time() const
+{
+    return glfwGetTime();
+}
 
 void Window::framebufferSize(int& width, int& height) const
 {
     glfwGetFramebufferSize(window_, &width, &height);
-    //glfwSetInputMode(window_, GLFW_CURSOR, GLFW_CURSOR_DISABLED); //dont locking my cursor
+    // glfwSetInputMode(window_, GLFW_CURSOR, GLFW_CURSOR_DISABLED); //dont locking my cursor
 
     if (width > 0 && height > 0)
         glViewport(0, 0, width, height);
 }
 
+void Window::windowSize(int& width, int& height) const
+{
+    glfwGetWindowSize(window_, &width, &height);
+}
 void Window::cursorPosition(double& x, double& y) const
 {
     glfwGetCursorPos(window_, &x, &y);
